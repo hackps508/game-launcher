@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Launcher</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            overflow: hidden;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            background: url('spider_logo.jpg') no-repeat center center fixed;
+            background-size: cover;
+        }
+        .login-container, .launcher-container {
+            position: relative;
+            z-index: 1;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            display: inline-block;
+            margin-top: 100px;
+        }
+        input {
+            width: 90%;
+            padding: 10px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            margin-top: 10px;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .search-box {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 5px;
+            border-radius: 5px;
+        }
+        .search-box input {
+            width: 150px;
+            padding: 5px;
+        }
+        .game-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        .game-info {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            width: 200px;
+        }
+        .game-info img {
+            width: 150px;
+            height: 150px;
+            border-radius: 10px;
+            cursor: pointer;
+            display: block;
+            margin: 0 auto 10px auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="loginPage" class="login-container">
+        <h2>Kyçu në Launcher</h2>
+        <input type="email" id="email" placeholder="Email">
+        <input type="password" id="password" placeholder="Fjalëkalimi">
+        <button onclick="login()">Hyr</button>
+    </div>
+    <div id="launcherPage" class="launcher-container" style="display: none;">
+        <h1>Game Launcher</h1>
+        <div class="search-box">
+            <input type="text" id="search" placeholder="Kërko lojën..." onkeyup="searchGame()">
+        </div>
+        <div class="game-container" id="gameContainer">
+            <div class="game-info" data-name="minecraft legends">
+                <h2>Minecraft Legends</h2>
+                <a href="https://drive.google.com/file/d/1YjjriAy3sfr3KkCBdFKKRyUSu-UpVKba/view?pli=1" target="_blank">
+                    <img src="minecraft_legends.jpg" alt="Minecraft Legends">
+                </a>
+            </div>
+            <div class="game-info" data-name="grand theft auto v gta v">
+                <h2>Grand Theft Auto V</h2>
+                <a href="https://www.mediafire.com/file/5of7xt5sp3m1gde" target="_blank">
+                    <img src="gtav_small.jpg" alt="GTA V">
+                </a>
+            </div>
+            <div class="game-info" data-name="microsoft flight simulator 2024">
+                <h2>Microsoft Flight Simulator 2024</h2>
+                <a href="https://1cloudfile.com/error?e=File+has+been+removed+due+to+inactivity." target="_blank">
+                    <img src="flight_simulator.jpg" alt="Flight Simulator">
+                </a>
+            </div>
+            <div class="game-info" data-name="farming simulator 25">
+                <h2>Farming Simulator 25</h2>
+                <a href="https://1cloudfile.com/2Nxl5" target="_blank">
+                    <img src="farming_simulator.jpg" alt="Farming Simulator 25">
+                </a>
+            </div>
+            <div class="game-info" data-name="marvel’s spider-man 2 spiderman">
+                <h2>Marvel’s Spider-Man 2</h2>
+                <a href="https://1fichier.com/?hcwqgjnbxx6y95up1qpp" target="_blank">
+                    <img src="spiderman2.jpg" alt="Spider-Man 2">
+                </a>
+            </div>
+        </div>
+    </div>
+    <script>
+        function login() {
+            let email = document.getElementById("email").value;
+            let password = document.getElementById("password").value;
+            if (email === "hackps508@gmail.com" && password === "hackps508") {
+                document.getElementById("loginPage").style.display = "none";
+                document.getElementById("launcherPage").style.display = "block";
+            } else {
+                alert("Email ose fjalëkalim i gabuar!");
+            }
+        }
+        function searchGame() {
+            let input = document.getElementById("search").value.toLowerCase();
+            let games = document.querySelectorAll(".game-info");
+            games.forEach(game => {
+                game.style.display = game.getAttribute("data-name").includes(input) ? "block" : "none";
+            });
+        }
+    </script>
+</body>
+</html>
